@@ -14,15 +14,15 @@ class MealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
       itemCount: meals.length,
-      itemBuilder: (cxt, index) => AppBar(
-        title: Text(meals[index].title,
-            style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
+      itemBuilder: (cxt, index) => Text(
+        meals[index].title,
+        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
       ),
     );
     if (meals.isEmpty) {
-      return Center(
+      content = Center(
         child: Text(
           'this is empty list',
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
