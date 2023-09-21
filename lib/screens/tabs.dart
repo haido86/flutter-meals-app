@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/providers/favorites_provider.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/meals.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
@@ -21,6 +22,13 @@ class _TabsScreen extends ConsumerState<TabsScreen> {
     setState(() {
       _selectedPageIndex = index;
     });
+  }
+
+  void _setScreen(String identifier) {
+    if (identifier == 'filters') {
+    } else {
+      Navigator.of(context).pop(); //close the menu
+    }
   }
 
   @override
@@ -42,6 +50,9 @@ class _TabsScreen extends ConsumerState<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(activeScreenTitle),
+      ),
+      drawer: MainDrawer(
+        onSelectScreen: _setScreen,
       ),
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
