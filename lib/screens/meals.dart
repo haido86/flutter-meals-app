@@ -7,6 +7,7 @@ import 'package:meals_app/widgets/meal_item.dart';
 class MealsScreen extends StatelessWidget {
   final String? title;
   final List<Meal> meals;
+
   const MealsScreen({
     super.key,
     this.title,

@@ -8,6 +8,7 @@ import 'package:meals_app/widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   final List<Meal> availableMeals;
+
   const CategoriesScreen({
     super.key,
     required this.availableMeals,
