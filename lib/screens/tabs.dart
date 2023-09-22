@@ -12,9 +12,7 @@ class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
 
   @override
-  ConsumerState<TabsScreen> createState() {
-    return _TabsScreen();
-  }
+  ConsumerState<TabsScreen> createState() => _TabsScreen();
 }
 
 class _TabsScreen extends ConsumerState<TabsScreen> {
