@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:meals_app/providers/favorites_provider.dart';
+import 'package:meals_app/providers/filters_provider.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/filters.dart';
 import 'package:meals_app/screens/meals.dart';
@@ -25,10 +26,10 @@ class _TabsScreen extends ConsumerState<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) {
+  void _setScreen(String identifier) async {
     Navigator.of(context).pop(); //close the menu
     if (identifier == 'filters') {
-      Navigator.of(context).push(
+      await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(
           builder: (BuildContext ctx) => const FiltersScreen(),
         ),
@@ -38,7 +39,10 @@ class _TabsScreen extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget activeScreen = const CategoriesScreen();
+    final availableMeals = ref.watch(filterMealsProvider);
+    Widget activeScreen = CategoriesScreen(
+      availableMeals: availableMeals,
+    );
     var activeScreenTitle = 'Categories';
 
     if (_selectedPageIndex == 1) {
